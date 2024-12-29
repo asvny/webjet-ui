@@ -1,0 +1,18 @@
+.accordionSummary {
+  display: inline-flex;
+  gap: var(--spacing-scale);
+  color: #6b6967;
+}
+
+.accordionIndicator {
+  width: 12px;
+  fill: currentColor;
+}
+
+.accordionTitle {
+  font-size: 14px;
+}
+
+.accordionContent {
+  padding-inline-start: calc(var(--spacing-scale) * 2);
+}

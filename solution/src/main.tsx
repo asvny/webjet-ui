@@ -1,8 +1,11 @@
-import { StrictMode } from "react";
+import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { HotelListing } from "./hotel_listing/main";
 import "./reset.css";
 import "./global.css";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 const hotelListings = [
   {
@@ -187,8 +190,134 @@ const hotelListings = [
   },
 ];
 
+enum Ratings {
+  ALL = "ALL",
+  FIVE = "5",
+  FOUR = "4",
+  THREE = "3",
+  TWO = "2",
+}
+
+const api = {
+  async fetchHotels() {
+    return {
+      hotels: hotelListings,
+      city: "Melbourne",
+    };
+  },
+};
+
+const presenter = {
+  storeHotels(dispatch, { hotels, city }) {
+    const ascendingHotels = hotels.sort(
+      (hotelA, hotelB) => hotelA.price - hotelB.price
+    );
+
+    dispatch({
+      type: "STORE_HOTELS",
+      payload: {
+        hotels: ascendingHotels,
+        city,
+      },
+    });
+  },
+
+  changeSearchFilterName(dispatch, { searchName }) {
+    dispatch({
+      type: "CHANGE_FILTER_NAME",
+      payload: {
+        searchName,
+      },
+    });
+  },
+};
+
+function Main() {
+  const [state, dispatch] = React.useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "STORE_HOTELS": {
+          const newState = window.structuredClone(state);
+
+          newState.hotels = action.payload.hotels;
+          newState.city = action.payload.city;
+
+          return newState;
+        }
+
+        case "CHANGE_FILTER_NAME": {
+          const newState = window.structuredClone(state);
+
+          newState.searchName = action.payload.searchName;
+
+          return newState;
+        }
+      }
+
+      return state;
+    },
+    {
+      searchName: "",
+      searchRating: Ratings.ALL,
+      hotels: [],
+      city: null,
+    }
+  );
+
+  console.log(state);
+
+  React.useEffect(() => {
+    api.fetchHotels().then((response) => {
+      presenter.storeHotels(dispatch, {
+        hotels: response.hotels,
+        city: response.city,
+      });
+    });
+  }, []);
+
+  React.useEffect(() => {
+    let unlisten = history.listen((t) => {
+      console.log(t);
+
+      const searchP = new URLSearchParams(t.location.search);
+
+      console.log([...searchP.entries()]);
+    });
+
+    return () => {
+      unlisten();
+    };
+  });
+
+  const handleSearchByName = React.useCallback((text) => {
+    if (text.length === 0) {
+      history.push(`${history.location.pathname}`);
+      return;
+    }
+
+    history.push(`${history.location.pathname}?name=${text}`);
+  }, []);
+
+  const handleSearchByRating = React.useCallback(() => {
+    // if (text.length === 0) {
+    //   history.push(`${history.location.pathname}`);
+    //   return;
+    // }
+    // history.push(`${history.location.pathname}?name=${text}`);
+  }, []);
+
+  return (
+    <HotelListing
+      hotels={state.hotels}
+      city={state.city}
+      onSearchByName={handleSearchByName}
+      onSearchByRating={handleSearchByRating}
+    />
+  );
+}
+
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <HotelListing hotels={hotelListings} city="Melbourne" />
-  </StrictMode>
+  <React.StrictMode>
+    <Main />
+  </React.StrictMode>
 );

@@ -6,6 +6,7 @@ import adsImage from "./assets/ads.png";
 
 import { FilterByHotelName } from "./filter_by_name";
 import { FilterByRating } from "./filter_by_rating";
+import React from "react";
 
 interface HotelListingProps {
   hotels: Array<any>;
@@ -13,7 +14,7 @@ interface HotelListingProps {
 }
 
 export function HotelListing(props: HotelListingProps) {
-  const { hotels, city } = props;
+  const { hotels, city, onSearchByName } = props;
 
   return (
     <Layout
@@ -28,7 +29,7 @@ export function HotelListing(props: HotelListingProps) {
           right={<Ads />}
           left={
             <FilterContainer>
-              <FilterByHotelName />
+              <FilterByHotelName onSubmit={onSearchByName} />
               <FilterByRating />
             </FilterContainer>
           }
@@ -92,7 +93,13 @@ interface FilterContainerProps {
 function FilterContainer(props: FilterContainerProps) {
   const { children } = props;
 
-  return <div className={layoutStyles.filterContainer}>{children}</div>;
+  return (
+    <div className={layoutStyles.filterContainer}>
+      <div className={layoutStyles.filterTitle}>Filter results</div>
+
+      <form>{children}</form>
+    </div>
+  );
 }
 
 interface HotelListingCardProps {

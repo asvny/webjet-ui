@@ -1,0 +1,29 @@
+.nameFilterWrapper {
+  display: flex;
+  border: 1px solid #cdcbc8;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 32px;
+}
+
+.nameFilterInput,
+.nameFilterButton {
+  border: 0;
+  appearance: none;
+  min-width: 0;
+}
+
+.nameFilterInput {
+  font-size: 12px;
+  padding-inline-start: var(--spacing-scale);
+}
+
+.nameFilterButton {
+  padding-inline: var(--spacing-scale);
+  flex-shrink: 0;
+  font-size: 14px;
+  border-inline-start: 1px solid #cdcbc8;
+}
+
+.nameFilterButton:hover {
+}
