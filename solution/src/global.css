@@ -1,0 +1,36 @@
+:root {
+  /* Grey shades */
+
+  /*  For backgrounds */
+  --grey-100: #f5f5f5;
+  /* For Room type */
+  --grey-200: #696c71;
+  /* For active checkbox background */
+  --grey-300: #646464;
+
+  --primary: #dc140b;
+  --container-background: #fff;
+
+  /* Spacing */
+  --spacing-scale: 8px;
+
+  --spacing-xl: var(--spacing-scale);
+  --spacing-l: var(--spacing-scale);
+  --spacing-m: var(--spacing-scale);
+  --spacing-s: var(--spacing-scale);
+  --spacing-xs: var(--spacing-scale);
+
+  /* Typography */
+  --text-body: #333333;
+  --text-secondary: #333333;
+  --font: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  /* Rating */
+  --rating-background: #feb42b;
+}
+
+body {
+  background: var(--primary);
+  font-family: var(--font);
+}
