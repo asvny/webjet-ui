@@ -1,7 +1,75 @@
 .container {
   display: block;
-  background: var(--container-background);
-  width: 1200px;
+  width: 100%;
   margin-inline: auto;
-  margin-block-start: ;
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+.mainContainer {
+  background-color: var(--container-background);
+  padding: calc(var(--spacing-scale) * 2);
+}
+
+.title {
+  display: none;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: var(--text-header-size);
+  grid-area: title;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas: "listing";
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 992px) {
+  .wrapper {
+    display: grid;
+    gap: calc(var(--spacing-scale) * 2);
+    grid-template-columns: 180px 1fr 180px;
+    grid-template-areas:
+      "title   title   ads"
+      "filters listing ads";
+  }
+}
+
+.ads {
+  grid-area: ads;
+}
+
+.filterContainer {
+  grid-area: filters;
+}
+
+.listings {
+  grid-area: listing;
+}
+
+.ads {
+  display: none;
+}
+
+.filterContainer {
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .ads {
+    display: block;
+  }
+
+  .filterContainer {
+    display: block;
+  }
+
+  .title {
+    display: block;
+  }
 }

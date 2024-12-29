@@ -25,7 +25,7 @@
   --text-secondary: #333333;
   --font: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
+  --text-header-size: 24px;
   /* Rating */
   --rating-background: #feb42b;
 }
