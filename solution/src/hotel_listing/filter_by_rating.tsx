@@ -3,7 +3,7 @@ import { Accordion } from "../ui/accordion/accordion";
 import React from "react";
 
 import styles from "./filter_by_rating.module.css";
-import { DiamondIcon } from "../ui/icons/diamond";
+import { DiamondRatings } from "../ui/rating/rating";
 
 enum Ratings {
   ALL = "ALL",
@@ -123,16 +123,4 @@ export function FilterByRating({ onChange }) {
       </Accordion>
     </section>
   );
-}
-
-// Helper
-
-function DiamondRatings({ count }) {
-  const stars = [];
-
-  for (let i = 0; i < count; i++) {
-    stars.push(<DiamondIcon width={16} height={16} key={i} />);
-  }
-
-  return <>{stars}</>;
 }

@@ -1,151 +1,65 @@
-import { Header } from "./header";
-import { Layout } from "./layout";
-import layoutStyles from "./layout.module.css";
-
-import adsImage from "./assets/ads.png";
-
-import { FilterByHotelName } from "./filter_by_name";
-import { FilterByRating } from "./filter_by_rating";
 import React from "react";
+import { BrowserHistory } from "history";
+import { ApiInterface } from "../services/api";
+import { useHotelListingReducer } from "./hotel_listing_reducer";
+import { useHistory } from "../helpers/use_history";
+import { HotelListingView } from "./hotel_listing_view";
 
-interface HotelListingProps {
-  hotels: Array<any>;
-  city: string;
+interface MainHotelListingProps {
+  history: BrowserHistory;
+  api: ApiInterface;
 }
 
-export function HotelListing(props: HotelListingProps) {
-  const { hotels, city, onSearchByName } = props;
+export function MainHotelListing(props: MainHotelListingProps) {
+  const { history, api } = props;
+
+  const [state, dispatch] = useHotelListingReducer();
+
+  useHistory(history, ({ name, ratings }) => {
+    dispatch({
+      type: "CHANGE_FILTERS",
+      payload: {
+        name,
+        ratings,
+      },
+    });
+  });
+
+  React.useEffect(() => {
+    api.fetchHotels().then((response) => {
+      dispatch({
+        type: "STORE_HOTELS",
+        payload: {
+          hotels: response.hotels,
+          city: response.city,
+        },
+      });
+    });
+  }, []);
+
+  const handleSearchByName = React.useCallback((text: string) => {
+    if (text.length === 0) {
+      history.push(`${history.location.pathname}`);
+      return;
+    }
+
+    history.push(`${history.location.pathname}?name=${text}`);
+  }, []);
+
+  const handleSearchByRating = React.useCallback(() => {
+    // TODO
+  }, []);
+
+  if (state.status !== "loaded") {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <Layout
-      header={<Header />}
-      content={
-        <Container
-          title={
-            <h1 className={layoutStyles.title}>
-              {hotels.length} Hotels Available in {city}
-            </h1>
-          }
-          right={<Ads />}
-          left={
-            <FilterContainer>
-              <FilterByHotelName onSubmit={onSearchByName} />
-              <FilterByRating />
-            </FilterContainer>
-          }
-        >
-          {hotels.map((hotel) => {
-            return (
-              <HotelListingCard
-                key={hotel.id}
-                name={hotel.name}
-                image={hotel.image}
-                price={hotel.price}
-                rating={hotel.rating}
-                roomType={hotel.room_type}
-              />
-            );
-          })}
-        </Container>
-      }
+    <HotelListingView
+      city={state.city}
+      hotels={state.hotelResults}
+      onSearchByName={handleSearchByName}
+      onSearchByRating={handleSearchByRating}
     />
-  );
-}
-
-interface ContainerProps {
-  children: React.ReactNode;
-  title: React.ReactNode;
-  left: React.ReactNode;
-  right: React.ReactNode;
-}
-
-function Container(props: ContainerProps) {
-  const { children, title, left, right } = props;
-
-  return (
-    <div className={layoutStyles.wrapper}>
-      {title}
-      {left}
-      <div className={layoutStyles.listings}>{children}</div>
-      {right}
-    </div>
-  );
-}
-
-function Ads() {
-  return (
-    <div className={layoutStyles.ads}>
-      {/* Actual ads link can be put here */}
-      <a href="https://www.webjet.com.au/" target="_blank" rel="noopener">
-        <img
-          src={adsImage}
-          alt="27 day Grand Scandinavia tour with baltics cruises and flights - $6999"
-        />
-      </a>
-    </div>
-  );
-}
-
-interface FilterContainerProps {
-  children: React.ReactNode;
-}
-
-function FilterContainer(props: FilterContainerProps) {
-  const { children } = props;
-
-  return (
-    <div className={layoutStyles.filterContainer}>
-      <div className={layoutStyles.filterTitle}>Filter results</div>
-
-      <form>{children}</form>
-    </div>
-  );
-}
-
-interface HotelListingCardProps {
-  name: string;
-  image: string;
-  price: number;
-  rating: number;
-  roomType: string;
-}
-
-function HotelListingCard(props: HotelListingCardProps) {
-  const { name, image, price, rating, roomType } = props;
-
-  return (
-    <article className={layoutStyles.card}>
-      <img
-        style={{
-          gridArea: "image",
-        }}
-        src={image}
-        alt={`${name} image`}
-      />
-
-      <div
-        style={{
-          gridArea: "info",
-        }}
-      >
-        <h2>{name}</h2>
-        <div>{rating}</div>
-        <div>{roomType}</div>
-      </div>
-
-      <div
-        style={{
-          gridArea: "price",
-          backgroundColor: "#f1f1f1",
-          textAlign: "end",
-          paddingBlock: 24,
-          paddingInline: 16,
-          fontSize: 24,
-          fontWeight: 600,
-        }}
-      >
-        ${price}
-      </div>
-    </article>
   );
 }

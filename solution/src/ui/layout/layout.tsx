@@ -12,7 +12,7 @@ export function Layout(props: LayoutProps) {
     <div className={styles.container}>
       {header}
 
-      <main className={styles.mainContainer}>{content}</main>
+      <main className={styles.main}>{content}</main>
     </div>
   );
 }

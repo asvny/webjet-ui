@@ -1,0 +1,16 @@
+.card {
+  display: grid;
+  gap: 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  padding-inline: 8px;
+  padding-block: 4px;
+  margin-block-end: 24px;
+  overflow: hidden;
+  height: 200px;
+  grid-template-columns: 300px 1fr 150px;
+  grid-template-areas: "image info price";
+}
+
+.card img {
+  width: 300px;
+}

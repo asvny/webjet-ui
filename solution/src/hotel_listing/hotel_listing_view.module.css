@@ -1,0 +1,61 @@
+.title {
+  display: none;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: var(--text-header-size);
+  grid-area: title;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas: "listing";
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 992px) {
+  .wrapper {
+    display: grid;
+    gap: calc(var(--spacing-scale) * 2);
+    grid-template-columns: 200px 1fr 180px;
+    grid-template-areas:
+      "title   title   ads"
+      "filters listing ads";
+  }
+}
+
+.ads {
+  grid-area: ads;
+}
+
+.listings {
+  grid-area: listing;
+}
+
+.ads {
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .ads {
+    display: block;
+  }
+
+  .title {
+    display: block;
+  }
+}
+
+.filterContainer {
+  grid-area: filters;
+  display: none;
+  background-color: var(--grey-100);
+  padding: var(--spacing-scale);
+  border-radius: 4px;
+}
+
+.filterTitle {
+  font-weight: 600;
+  border-block-end: 1px solid var(--container-border);
+  padding-block: var(--spacing-scale);
+  padding-inline-start: var(--spacing-scale);
+}
