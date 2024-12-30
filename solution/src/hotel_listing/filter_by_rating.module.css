@@ -1,0 +1,37 @@
+.ratingFilterList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--spacing-scale);
+}
+
+.ratingFilterItem {
+  display: inline-flex;
+  gap: var(--spacing-scale);
+  font-size: 14px;
+  align-items: center;
+}
+
+.ratingFilterStarWrapper {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #646464;
+}
+
+.checkbox:checked {
+  background-color: #646464;
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MjAgNTIwIiBpZD0iY2hlY2siPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xOTEgNDI1TDI2IDI1OWMtNi02LTYtMTYgMC0yMmwyMi0yMmM2LTYgMTYtNiAyMiAwbDEyNCAxMjVhMTAgMTAgMCAwMDE1IDBMNDUyIDk1YzYtNiAxNi02IDIyIDBsMjIgMjJjNiA2IDYgMTYgMCAyMkwyMTMgNDI1Yy02IDctMTYgNy0yMiAweiI+PC9wYXRoPjwvc3ZnPg==);
+}

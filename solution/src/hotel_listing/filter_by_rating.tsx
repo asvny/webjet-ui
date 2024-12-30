@@ -2,6 +2,9 @@ import layoutStyles from "./layout.module.css";
 import { Accordion } from "../ui/accordion/accordion";
 import React from "react";
 
+import styles from "./filter_by_rating.module.css";
+import { DiamondIcon } from "../ui/icons/diamond";
+
 enum Ratings {
   ALL = "ALL",
   FIVE = "5",
@@ -35,12 +38,13 @@ export function FilterByRating({ onChange }) {
   return (
     <section className={layoutStyles.filterSection}>
       <Accordion title="Quality Rating">
-        <ul>
+        <ul className={styles.ratingFilterList}>
           <li>
-            <label>
+            <label className={styles.ratingFilterItem}>
               <input
                 type="checkbox"
                 name="rating"
+                className={styles.checkbox}
                 value={Ratings.ALL}
                 checked={ratings.includes(Ratings.ALL)}
                 onChange={handleChange}
@@ -50,61 +54,85 @@ export function FilterByRating({ onChange }) {
           </li>
 
           <li>
-            <label>
+            <label className={styles.ratingFilterItem}>
               <input
                 type="checkbox"
                 name="rating"
+                className={styles.checkbox}
                 value={Ratings.FIVE}
                 checked={ratings.includes(Ratings.FIVE)}
                 onChange={handleChange}
               />
-              <span>5 stars</span>
+              <span className={styles.ratingFilterStarWrapper}>
+                <DiamondRatings count={5} />
+              </span>
             </label>
           </li>
 
           <li>
-            <label>
+            <label className={styles.ratingFilterItem}>
               <input
                 type="checkbox"
                 name="rating"
+                className={styles.checkbox}
                 value={Ratings.FOUR}
                 checked={ratings.includes(Ratings.FOUR)}
                 onChange={handleChange}
               />
 
-              <span>4 stars</span>
+              <span className={styles.ratingFilterStarWrapper}>
+                <DiamondRatings count={4} />
+              </span>
             </label>
           </li>
 
           <li>
-            <label>
+            <label className={styles.ratingFilterItem}>
               <input
                 type="checkbox"
                 name="rating"
+                className={styles.checkbox}
                 value={Ratings.THREE}
                 checked={ratings.includes(Ratings.THREE)}
                 onChange={handleChange}
               />
 
-              <span>3 stars</span>
+              <span className={styles.ratingFilterStarWrapper}>
+                <DiamondRatings count={3} />
+              </span>
             </label>
           </li>
 
           <li>
-            <label>
+            <label className={styles.ratingFilterItem}>
               <input
                 type="checkbox"
                 name="rating"
+                className={styles.checkbox}
                 value={Ratings.TWO}
                 checked={ratings.includes(Ratings.TWO)}
                 onChange={handleChange}
               />
 
-              <span>2 stars</span>
+              <span className={styles.ratingFilterStarWrapper}>
+                <DiamondRatings count={2} />
+              </span>
             </label>
           </li>
         </ul>
       </Accordion>
     </section>
   );
+}
+
+// Helper
+
+function DiamondRatings({ count }) {
+  const stars = [];
+
+  for (let i = 0; i < count; i++) {
+    stars.push(<DiamondIcon width={16} height={16} key={i} />);
+  }
+
+  return <>{stars}</>;
 }

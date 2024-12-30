@@ -114,15 +114,38 @@ function HotelListingCard(props: HotelListingCardProps) {
   const { name, image, price, rating, roomType } = props;
 
   return (
-    <article>
-      <img src={image} alt={`${name} image`} />
+    <article className={layoutStyles.card}>
+      <img
+        style={{
+          gridArea: "image",
+        }}
+        src={image}
+        alt={`${name} image`}
+      />
 
-      <h2>{name}</h2>
+      <div
+        style={{
+          gridArea: "info",
+        }}
+      >
+        <h2>{name}</h2>
+        <div>{rating}</div>
+        <div>{roomType}</div>
+      </div>
 
-      <div>{rating}</div>
-      <div>{roomType}</div>
-
-      <div>{price}</div>
+      <div
+        style={{
+          gridArea: "price",
+          backgroundColor: "#f1f1f1",
+          textAlign: "end",
+          paddingBlock: 24,
+          paddingInline: 16,
+          fontSize: 24,
+          fontWeight: 600,
+        }}
+      >
+        ${price}
+      </div>
     </article>
   );
 }

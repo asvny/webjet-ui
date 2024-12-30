@@ -209,24 +209,21 @@ const api = {
 
 const presenter = {
   storeHotels(dispatch, { hotels, city }) {
-    const ascendingHotels = hotels.sort(
-      (hotelA, hotelB) => hotelA.price - hotelB.price
-    );
-
     dispatch({
       type: "STORE_HOTELS",
       payload: {
-        hotels: ascendingHotels,
+        hotels,
         city,
       },
     });
   },
 
-  changeSearchFilterName(dispatch, { searchName }) {
+  changeSearchFilters(dispatch, { name, rating }) {
     dispatch({
-      type: "CHANGE_FILTER_NAME",
+      type: "CHANGE_FILTERS",
       payload: {
-        searchName,
+        name,
+        rating,
       },
     });
   },
@@ -239,16 +236,28 @@ function Main() {
         case "STORE_HOTELS": {
           const newState = window.structuredClone(state);
 
-          newState.hotels = action.payload.hotels;
+          const ascendingHotels = action.payload.hotels.sort(
+            (hotelA, hotelB) => hotelA.price - hotelB.price
+          );
+
+          newState.allHotels = ascendingHotels;
+          newState.hotelResults = ascendingHotels;
           newState.city = action.payload.city;
 
           return newState;
         }
 
-        case "CHANGE_FILTER_NAME": {
+        case "CHANGE_FILTERS": {
           const newState = window.structuredClone(state);
 
-          newState.searchName = action.payload.searchName;
+          const searchName = action.payload.name ?? "";
+          const searchRating = action.payload.rating;
+          newState.searchName = searchName;
+
+          const results = newState.allHotels.filter((hotel) =>
+            hotel.name.toLowerCase().includes(searchName.toLowerCase())
+          );
+          newState.hotelResults = results;
 
           return newState;
         }
@@ -259,7 +268,8 @@ function Main() {
     {
       searchName: "",
       searchRating: Ratings.ALL,
-      hotels: [],
+      allHotels: [],
+      hotelResults: [],
       city: null,
     }
   );
@@ -277,11 +287,12 @@ function Main() {
 
   React.useEffect(() => {
     let unlisten = history.listen((t) => {
-      console.log(t);
-
       const searchP = new URLSearchParams(t.location.search);
 
-      console.log([...searchP.entries()]);
+      presenter.changeSearchFilters(dispatch, {
+        name: searchP.get("name"),
+        rating: searchP.get("rating"),
+      });
     });
 
     return () => {
@@ -308,7 +319,7 @@ function Main() {
 
   return (
     <HotelListing
-      hotels={state.hotels}
+      hotels={state.hotelResults}
       city={state.city}
       onSearchByName={handleSearchByName}
       onSearchByRating={handleSearchByRating}
