@@ -1,3 +1,4 @@
+import { ChevronRightIcon } from "../ui/icons/chevron-right";
 import { DiamondRatings } from "../ui/rating/rating";
 import styles from "./hotel_card.module.css";
 
@@ -26,13 +27,19 @@ export function HotelListingCard(props: HotelListingCardProps) {
           <div className={styles.ratings}>
             <DiamondRatings count={rating} />
           </div>
-          <div>
-            <b className={styles.roomType}>Room type:</b>
+          <div className={styles.roomType}>
+            <b className={styles.roomTypeTitle}>Room type:</b>
             {roomType}
           </div>
         </div>
 
-        <div className={styles.price}>${price}</div>
+        <div className={styles.price}>
+          <div>${price}</div>
+
+          <div className={styles.indicator}>
+            <ChevronRightIcon width={16} height={16} />
+          </div>
+        </div>
       </article>
     </a>
   );

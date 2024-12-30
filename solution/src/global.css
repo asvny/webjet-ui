@@ -31,7 +31,12 @@
   --rating-background: #feb42b;
 }
 
+html {
+  font-size: 100%;
+}
+
 body {
   background: var(--primary);
   font-family: var(--font);
+  font-size: 1rem;
 }

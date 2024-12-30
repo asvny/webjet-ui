@@ -58,3 +58,7 @@ h5,
 h6 {
   text-wrap: balance;
 }
+
+svg {
+  fill: currentColor;
+}

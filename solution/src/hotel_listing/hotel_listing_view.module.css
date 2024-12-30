@@ -1,5 +1,5 @@
 .title {
-  display: none;
+  display: block;
   color: var(--primary);
   font-weight: 800;
   font-size: var(--text-header-size);
@@ -8,7 +8,10 @@
 
 .wrapper {
   display: grid;
-  grid-template-areas: "listing";
+  gap: calc(var(--spacing-scale) * 2);
+  grid-template-areas:
+    "title"
+    "listing";
   grid-template-columns: 1fr;
 }
 
@@ -38,10 +41,6 @@
 
 @media screen and (min-width: 992px) {
   .ads {
-    display: block;
-  }
-
-  .title {
     display: block;
   }
 }

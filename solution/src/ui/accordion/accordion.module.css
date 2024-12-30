@@ -4,6 +4,10 @@
   color: #6b6967;
 }
 
+.accordionSummary::-webkit-details-marker {
+  display: none;
+}
+
 .accordionIndicator {
   width: 12px;
   fill: currentColor;
