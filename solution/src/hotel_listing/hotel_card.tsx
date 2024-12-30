@@ -13,40 +13,27 @@ export function HotelListingCard(props: HotelListingCardProps) {
   const { name, image, price, rating, roomType } = props;
 
   return (
-    <article className={styles.card}>
-      <img
-        style={{
-          gridArea: "image",
-        }}
-        src={image}
-        alt={`${name} image`}
-      />
+    <a
+      className={styles.link}
+      href="https://www.webjet.com.au/"
+      target="_blank"
+    >
+      <article className={styles.card}>
+        <img className={styles.image} src={image} alt={`${name} image`} />
 
-      <div
-        style={{
-          gridArea: "info",
-        }}
-      >
-        <h2>{name}</h2>
-        <div>
-          <DiamondRatings count={rating} />
+        <div className={styles.info}>
+          <h2>{name}</h2>
+          <div className={styles.ratings}>
+            <DiamondRatings count={rating} />
+          </div>
+          <div>
+            <b className={styles.roomType}>Room type:</b>
+            {roomType}
+          </div>
         </div>
-        <div>{roomType}</div>
-      </div>
 
-      <div
-        style={{
-          gridArea: "price",
-          backgroundColor: "#f1f1f1",
-          textAlign: "end",
-          paddingBlock: 24,
-          paddingInline: 16,
-          fontSize: 24,
-          fontWeight: 600,
-        }}
-      >
-        ${price}
-      </div>
-    </article>
+        <div className={styles.price}>${price}</div>
+      </article>
+    </a>
   );
 }

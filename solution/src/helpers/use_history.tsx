@@ -14,12 +14,13 @@ export function useHistory(
   React.useEffect(() => {
     let unlisten = history.listen(({ location }) => {
       const searchParams = new URLSearchParams(location.search);
+      const ratings = searchParams.get("ratings");
 
       callback({
         name: searchParams.get("name") ?? "",
-        // TODO
-        // ratings: searchParams.get("ratings"),
-        ratings: [],
+        ratings: ratings
+          ? (decodeURI(ratings).split(",") as Ratings[])
+          : [Ratings.ALL],
       });
     });
 

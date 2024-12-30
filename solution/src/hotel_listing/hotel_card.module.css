@@ -1,3 +1,8 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   display: grid;
   gap: 16px;
@@ -11,6 +16,33 @@
   grid-template-areas: "image info price";
 }
 
-.card img {
-  width: 300px;
+.image {
+  grid-area: image;
+}
+
+.info {
+  grid-area: info;
+  font-size: 14px;
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 8px;
+}
+
+.price {
+  grid-area: price;
+  background-color: #f1f1f1;
+  text-align: end;
+  padding-block: 24px;
+  padding-inline: 16px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.ratings {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.roomType {
+  margin-inline-end: 4px;
 }

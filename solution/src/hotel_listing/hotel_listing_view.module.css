@@ -17,6 +17,7 @@
     display: grid;
     gap: calc(var(--spacing-scale) * 2);
     grid-template-columns: 200px 1fr 180px;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "title   title   ads"
       "filters listing ads";
@@ -53,9 +54,24 @@
   border-radius: 4px;
 }
 
+@media screen and (min-width: 992px) {
+  .filterContainer {
+    display: block;
+    align-self: flex-start;
+  }
+}
+
 .filterTitle {
   font-weight: 600;
   border-block-end: 1px solid var(--container-border);
   padding-block: var(--spacing-scale);
   padding-inline-start: var(--spacing-scale);
+}
+
+.filterSection {
+  padding-block: calc(var(--spacing-scale) * 2);
+}
+
+.filterSection + .filterSection {
+  border-block-start: 1px solid var(--container-border);
 }
