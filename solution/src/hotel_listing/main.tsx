@@ -2,9 +2,10 @@ import React from "react";
 import { BrowserHistory, createPath } from "history";
 import { ApiInterface } from "../services/api";
 import { useHotelListingReducer } from "./hotel_listing_reducer";
-import { getNameAndRatingsParams, useHistory } from "../helpers/use_history";
+import { useHistory } from "../helpers/use_history";
 import { HotelListingView } from "./hotel_listing_view";
 import { Ratings } from "./types";
+import { getNameAndRatingsParams } from "../helpers/get_name_rating_filter";
 
 interface MainHotelListingProps {
   // History object used for navigation
