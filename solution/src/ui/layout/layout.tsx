@@ -1,7 +1,9 @@
 import styles from "./layout.module.css";
 
 interface LayoutProps {
+  // Header node to display logo
   header: React.ReactNode;
+  // Actual listing content
   content: React.ReactNode;
 }
 

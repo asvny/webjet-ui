@@ -1,3 +1,4 @@
+// Star filter ratings
 export enum Ratings {
   ALL = "ALL",
   FIVE = "5",

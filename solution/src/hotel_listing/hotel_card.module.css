@@ -6,25 +6,23 @@
 .card {
   display: grid;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin-block-end: 24px;
+  margin-block-end: var(--spacing-xl);
   overflow: hidden;
+  padding-inline: var(--spacing-m);
+  padding-block: var(--spacing-s);
 }
 
 @media screen and (max-width: 768px) {
   .card {
-    padding-inline: 8px;
-    padding-block: 4px;
     grid-template-columns: 1fr 1fr 160px;
     grid-template-areas:
       "image image image"
-      "info info  price";
+      "info  info  price";
   }
 }
 
 @media screen and (min-width: 768px) {
   .card {
-    padding-inline: 8px;
-    padding-block: 4px;
     gap: 16px;
     grid-template-columns: 300px 1fr 150px;
     grid-template-areas: "image info price";
@@ -51,27 +49,27 @@
 
 @media screen and (max-width: 768px) {
   .info {
-    font-size: 12px;
-    gap: 4px;
+    font-size: var(--text-size-xs);
+    gap: var(--spacing-s);
     align-content: center;
-    padding-inline-start: 4px;
+    padding-inline-start: var(--spacing-s);
   }
 }
 
 @media screen and (min-width: 768px) {
   .info {
-    gap: 8px;
-    font-size: 14px;
+    gap: var(--spacing-m);
+    font-size: var(--text-size-s);
   }
 }
 
 .price {
   grid-area: price;
-  background-color: #f1f1f1;
-  font-size: 28px;
+  background-color: var(--gray-4);
+  font-size: var(--text-size-xxl);
   font-weight: 600;
   text-align: end;
-  gap: 8px;
+  gap: var(--spacing-m);
 
   display: inline-flex;
   justify-content: flex-end;
@@ -85,22 +83,24 @@
 
 @media screen and (min-width: 768px) {
   .price {
+    /* Deviate from spacing scale */
     padding-block: 20px;
-    padding-inline: 16px;
+    padding-inline: var(--spacing-l);
   }
 }
 
 .ratings {
   display: inline-flex;
-  gap: 2px;
+  gap: var(--spacing-xs);
 }
 
 .roomTypeTitle {
-  margin-inline-end: 4px;
+  margin-inline-end: var(--spacing-s);
 }
 
 .roomType {
   display: none;
+  color: var(--gray-11);
 }
 
 @media screen and (min-width: 768px) {
@@ -110,13 +110,13 @@
 }
 
 .indicator {
-  background-color: #2eb301;
+  width: 40px;
+  height: 60px;
+  background-color: var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 60px;
-  color: #fff;
+  color: var(--gray-1);
 }
 
 @media screen and (min-width: 768px) {

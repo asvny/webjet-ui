@@ -2,13 +2,13 @@
   display: block;
   color: var(--primary);
   font-weight: 800;
-  font-size: var(--text-header-size);
+  font-size: var(--text-size-xl);
   grid-area: title;
 }
 
 .wrapper {
   display: grid;
-  gap: calc(var(--spacing-scale) * 2);
+  gap: var(--spacing-l);
   grid-template-areas:
     "title"
     "listing";
@@ -18,7 +18,7 @@
 @media screen and (min-width: 992px) {
   .wrapper {
     display: grid;
-    gap: calc(var(--spacing-scale) * 2);
+    gap: var(--spacing-l);
     grid-template-columns: 200px 1fr 180px;
     grid-template-rows: auto 1fr;
     grid-template-areas:
@@ -48,8 +48,8 @@
 .filterContainer {
   grid-area: filters;
   display: none;
-  background-color: var(--grey-100);
-  padding: var(--spacing-scale);
+  background-color: var(--gray-2);
+  padding: var(--spacing-m);
   border-radius: 4px;
 }
 
@@ -68,9 +68,9 @@
 }
 
 .filterSection {
-  padding-block: calc(var(--spacing-scale) * 2);
+  padding-block: var(--spacing-l);
 }
 
 .filterSection + .filterSection {
-  border-block-start: 1px solid var(--container-border);
+  border-block-start: 1px solid var(--gray-7);
 }

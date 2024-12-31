@@ -12,5 +12,5 @@
 
 .main {
   background-color: var(--container-background);
-  padding: calc(var(--spacing-scale) * 2);
+  padding: var(--spacing-l);
 }

@@ -1,0 +1,29 @@
+.wrapper {
+  display: inline-flex;
+  gap: var(--spacing-m);
+  font-size: var(--text-size-s);
+  align-items: center;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  appearance: none;
+  background-color: var(--gray-1);
+  border: 1px solid var(--gray-9);
+}
+
+.checkbox:checked {
+  background-color: var(--gray-11);
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: center;
+  /* This is a base 64 encoded svg of checkbox tick in white color */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MjAgNTIwIiBpZD0iY2hlY2siPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xOTEgNDI1TDI2IDI1OWMtNi02LTYtMTYgMC0yMmwyMi0yMmM2LTYgMTYtNiAyMiAwbDEyNCAxMjVhMTAgMTAgMCAwMDE1IDBMNDUyIDk1YzYtNiAxNi02IDIyIDBsMjIgMjJjNiA2IDYgMTYgMCAyMkwyMTMgNDI1Yy02IDctMTYgNy0yMiAweiI+PC9wYXRoPjwvc3ZnPg==);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

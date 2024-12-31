@@ -1,29 +1,36 @@
-.nameFilterWrapper {
+.wrapper {
   display: flex;
-  border: 1px solid #cdcbc8;
+  border: 1px solid var(--gray-8);
   border-radius: 4px;
   overflow: hidden;
   height: 32px;
 }
 
-.nameFilterInput,
-.nameFilterButton {
+.input,
+.button {
   border: 0;
   appearance: none;
   min-width: 0;
 }
 
-.nameFilterInput {
-  font-size: 12px;
-  padding-inline-start: var(--spacing-scale);
+.input {
+  font-size: var(--text-size-xs);
+  padding-inline-start: var(--spacing-m);
 }
 
-.nameFilterButton {
-  padding-inline: var(--spacing-scale);
+.button {
+  background-color: var(--gray-4);
+  padding-inline: var(--spacing-m);
   flex-shrink: 0;
-  font-size: 14px;
-  border-inline-start: 1px solid #cdcbc8;
+  font-size: var(--text-size-s);
+  border-inline-start: 1px solid var(--gray-8);
+  transition: all 0.2s ease-in;
 }
 
-.nameFilterButton:hover {
+.button:hover {
+  background-color: var(--gray-6);
+}
+
+.button:active {
+  background-color: var(--gray-8);
 }

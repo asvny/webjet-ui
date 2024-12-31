@@ -9,10 +9,17 @@ import styles from "./hotel_listing_view.module.css";
 import { Ratings } from "./types";
 
 interface HotelListingViewProps {
+  // List of hotels to display
   hotels: Array<Hotel>;
+  // Name of the city where the hotels are located
   city: string;
+  // Initial search text for hotel names
   initialSearchByName: string;
+  // Initial search filter for ratings
+  initialSearchByRating: Array<Ratings>;
+  // Handler function for hotel name search
   onSearchByName: (text: string) => void;
+  // Handler function for rating search
   onSearchByRating: (ratings: Array<Ratings>) => void;
 }
 
@@ -21,18 +28,22 @@ export function HotelListingView(props: HotelListingViewProps) {
     hotels,
     city,
     initialSearchByName,
+    initialSearchByRating,
     onSearchByName,
     onSearchByRating,
   } = props;
 
+  // Placeholder ads in the right side bar
   const ads = <Ads className={styles.ads} />;
 
+  // Title to show the number of hotels in the given city
   const title = (
     <h1 className={styles.title}>
       {hotels.length} Hotels Available in {city}
     </h1>
   );
 
+  // Left section containing filters for hotel name and rating
   const left = (
     <FilterContainer>
       <FilterSection>
@@ -42,28 +53,34 @@ export function HotelListingView(props: HotelListingViewProps) {
         />
       </FilterSection>
       <FilterSection>
-        <FilterByRating onChange={onSearchByRating} />
+        <FilterByRating
+          initialValue={initialSearchByRating}
+          onChange={onSearchByRating}
+        />
       </FilterSection>
     </FilterContainer>
   );
+
+  // Displays the hotel cards
+  const list = hotels.map((hotel) => {
+    return (
+      <HotelListingCard
+        key={hotel.id}
+        name={hotel.name}
+        image={hotel.image}
+        price={hotel.price}
+        rating={hotel.rating}
+        roomType={hotel.room_type}
+      />
+    );
+  });
 
   return (
     <Layout
       header={<Header />}
       content={
         <Container title={title} right={ads} left={left}>
-          {hotels.map((hotel) => {
-            return (
-              <HotelListingCard
-                key={hotel.id}
-                name={hotel.name}
-                image={hotel.image}
-                price={hotel.price}
-                rating={hotel.rating}
-                roomType={hotel.room_type}
-              />
-            );
-          })}
+          {list}
         </Container>
       }
     />

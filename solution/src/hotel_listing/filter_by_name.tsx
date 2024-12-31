@@ -4,7 +4,9 @@ import { Accordion } from "../ui/accordion/accordion";
 import styles from "./filter_by_name.module.css";
 
 interface FilterByHotelNameProps {
+  // Initial value of the search input
   initialValue: string;
+  // Callback function triggered on submission
   onSubmit: (text: string) => void;
 }
 
@@ -16,9 +18,10 @@ export function FilterByHotelName({
 
   return (
     <Accordion title="Hotel Name">
-      <div className={styles.nameFilterWrapper}>
+      <div className={styles.wrapper}>
+        {/* Text input for entering the hotel name  */}
         <input
-          className={styles.nameFilterInput}
+          className={styles.input}
           type="text"
           value={searchText}
           placeholder="Enter Hotel Name"
@@ -26,8 +29,10 @@ export function FilterByHotelName({
             setSearchText(e.target.value);
           }}
         />
+
+        {/* Button to trigger the search submission */}
         <button
-          className={styles.nameFilterButton}
+          className={styles.button}
           type="button"
           onClick={() => onSubmit(searchText)}
         >

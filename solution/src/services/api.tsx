@@ -1,19 +1,30 @@
 // Mock data
 
+// Hotel object interface that defines the structure of each hotel listing
 export interface Hotel {
+  // Unique identifier for each hotel
   id: string;
+  // Name of the hotel
   name: string;
+  // Rating of the hotel, typically 1-5
   rating: number;
+  // Price of the hotel per night
   price: number;
+  // Description of the room type
   room_type: string;
+  // URL to the hotel image
   image: string;
 }
 
+// FetchHotelsResponse defines the structure of the response from the API
 export interface FetchHotelsResponse {
+  // City in which the hotels are located
   city: string;
+  // List of hotel objects
   hotels: Array<Hotel>;
 }
 
+// ApiInterface defines the structure of the API that fetches hotels
 export interface ApiInterface {
   fetchHotels: () => Promise<FetchHotelsResponse>;
 }
@@ -201,6 +212,7 @@ const hotelListings: Hotel[] = [
   },
 ];
 
+// `api` object simulates the behavior of a real API by returning mock data
 export const api: ApiInterface = {
   async fetchHotels() {
     return {

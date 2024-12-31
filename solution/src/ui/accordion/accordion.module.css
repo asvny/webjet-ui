@@ -1,22 +1,21 @@
-.accordionSummary {
+.summary {
   display: inline-flex;
-  gap: var(--spacing-scale);
-  color: #6b6967;
+  gap: var(--spacing-m);
+  color: var(--gray-11);
 }
 
-.accordionSummary::-webkit-details-marker {
+.summary::-webkit-details-marker {
   display: none;
 }
 
-.accordionIndicator {
+.indicator {
   width: 12px;
-  fill: currentColor;
 }
 
-.accordionTitle {
-  font-size: 14px;
+.title {
+  font-size: var(--text-size-s);
 }
 
-.accordionContent {
-  padding-inline-start: calc(var(--spacing-scale) * 2);
+.content {
+  padding-inline-start: var(--spacing-l);
 }

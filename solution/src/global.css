@@ -1,34 +1,50 @@
 :root {
-  /* Grey shades */
-
-  /*  For backgrounds */
-  --grey-100: #f5f5f5;
-  /* For Room type */
-  --grey-200: #696c71;
-  /* For active checkbox background */
-  --grey-300: #646464;
-
   --primary: #dc140b;
-  --container-background: #fff;
-  --container-border: #c7c7c9;
+
+  /* Rating */
+  --rating-background: #feb42b;
+
+  --green: #2eb300;
+
+  /* Grey shades */
+  --gray-1: #fff;
+  --gray-2: #f9f9fb;
+  --gray-3: #eff0f3;
+  --gray-4: #e7e8ec;
+  --gray-5: #e0e1e6;
+  --gray-6: #d8d9e0;
+  --gray-7: #cdced7;
+  --gray-8: #b9bbc6;
+  --gray-9: #8b8d98;
+  --gray-10: #80828d;
+  --gray-11: #62636c;
+  --gray-12: #1e1f24;
+
+  --container-background: var(--gray-1);
+  --container-border: var(--gray-6);
 
   /* Spacing */
   --spacing-scale: 8px;
 
-  --spacing-xl: var(--spacing-scale);
-  --spacing-l: var(--spacing-scale);
+  --spacing-xl: 24px;
+  --spacing-l: 16px;
   --spacing-m: var(--spacing-scale);
-  --spacing-s: var(--spacing-scale);
-  --spacing-xs: var(--spacing-scale);
+  --spacing-s: 4px;
+  --spacing-xs: 2px;
 
   /* Typography */
-  --text-body: #333333;
-  --text-secondary: #333333;
+  --text-body: var(--gray-12);
+  --text-secondary: var(--gray-10);
+
   --font: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --text-header-size: 24px;
-  /* Rating */
-  --rating-background: #feb42b;
+
+  --text-size-xxl: 28px;
+  --text-size-xl: 24px;
+  --text-size-l: 20px;
+  --text-size-m: 16px;
+  --text-size-s: 14px;
+  --text-size-xs: 12px;
 }
 
 html {
