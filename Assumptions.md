@@ -5,7 +5,7 @@
 ## Running locally
 
 - Clone this repository.
-- Navigate to the project directory: cd <directory-name>
+- Navigate to the project directory: `cd solution`
 - Install dependencies: `npm install`
 - Start the development server: `npm run dev`
 
@@ -19,10 +19,10 @@ npm run test
 
 ## Tech stack
 
-- React.js: For building the dynamic user interface.
-- TypeScript: Enhances code quality and ensures a better developer experience with type safety.
-- History API: Used for managing URL updates to reflect search queries by hotel name or rating.
-- Vitest: For running unit tests.
+- **React.js**: For building the dynamic user interface.
+- **TypeScript**: Enhances code quality and ensures a better developer experience with type safety.
+- **History API**: Used for managing URL updates to reflect search queries by hotel name or rating.
+- **Vitest**: For running unit tests.
 
 ## Assumptions
 
