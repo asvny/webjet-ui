@@ -13,4 +13,5 @@
 .main {
   background-color: var(--container-background);
   padding: var(--spacing-l);
+  margin-block-end: calc(var(--spacing-scale) * 8);
 }

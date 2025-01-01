@@ -72,57 +72,59 @@ export function FilterByRating(props: FilterByRatingProps) {
 
   return (
     <Accordion title="Quality Rating">
-      <ul className={styles.list}>
-        <li>
-          <Checkbox
-            name="rating"
-            label="All"
-            value={Ratings.ALL}
-            checked={ratings.includes(Ratings.ALL)}
-            onChange={handleChange}
-          />
-        </li>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <ul className={styles.list}>
+          <li>
+            <Checkbox
+              name="rating"
+              label="All"
+              value={Ratings.ALL}
+              checked={ratings.includes(Ratings.ALL)}
+              onChange={handleChange}
+            />
+          </li>
 
-        <li>
-          <Checkbox
-            name="rating"
-            label={<DiamondRatings count={5} />}
-            value={Ratings.FIVE}
-            checked={ratings.includes(Ratings.FIVE)}
-            onChange={handleChange}
-          />
-        </li>
+          <li>
+            <Checkbox
+              name="rating"
+              label={<DiamondRatings count={5} />}
+              value={Ratings.FIVE}
+              checked={ratings.includes(Ratings.FIVE)}
+              onChange={handleChange}
+            />
+          </li>
 
-        <li>
-          <Checkbox
-            name="rating"
-            label={<DiamondRatings count={4} />}
-            value={Ratings.FOUR}
-            checked={ratings.includes(Ratings.FOUR)}
-            onChange={handleChange}
-          />
-        </li>
+          <li>
+            <Checkbox
+              name="rating"
+              label={<DiamondRatings count={4} />}
+              value={Ratings.FOUR}
+              checked={ratings.includes(Ratings.FOUR)}
+              onChange={handleChange}
+            />
+          </li>
 
-        <li>
-          <Checkbox
-            name="rating"
-            label={<DiamondRatings count={3} />}
-            value={Ratings.THREE}
-            checked={ratings.includes(Ratings.THREE)}
-            onChange={handleChange}
-          />
-        </li>
+          <li>
+            <Checkbox
+              name="rating"
+              label={<DiamondRatings count={3} />}
+              value={Ratings.THREE}
+              checked={ratings.includes(Ratings.THREE)}
+              onChange={handleChange}
+            />
+          </li>
 
-        <li>
-          <Checkbox
-            name="rating"
-            label={<DiamondRatings count={2} />}
-            value={Ratings.TWO}
-            checked={ratings.includes(Ratings.TWO)}
-            onChange={handleChange}
-          />
-        </li>
-      </ul>
+          <li>
+            <Checkbox
+              name="rating"
+              label={<DiamondRatings count={2} />}
+              value={Ratings.TWO}
+              checked={ratings.includes(Ratings.TWO)}
+              onChange={handleChange}
+            />
+          </li>
+        </ul>
+      </form>
     </Accordion>
   );
 }

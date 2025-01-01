@@ -18,27 +18,29 @@ export function FilterByHotelName({
 
   return (
     <Accordion title="Hotel Name">
-      <div className={styles.wrapper}>
-        {/* Text input for entering the hotel name  */}
-        <input
-          className={styles.input}
-          type="text"
-          value={searchText}
-          placeholder="Enter Hotel Name"
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
+      <form onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.wrapper}>
+          {/* Text input for entering the hotel name  */}
+          <input
+            className={styles.input}
+            type="text"
+            value={searchText}
+            placeholder="Enter Hotel Name"
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
 
-        {/* Button to trigger the search submission */}
-        <button
-          className={styles.button}
-          type="button"
-          onClick={() => onSubmit(searchText)}
-        >
-          Go
-        </button>
-      </div>
+          {/* Button to trigger the search submission */}
+          <button
+            className={styles.button}
+            type="submit"
+            onClick={() => onSubmit(searchText)}
+          >
+            Go
+          </button>
+        </div>
+      </form>
     </Accordion>
   );
 }

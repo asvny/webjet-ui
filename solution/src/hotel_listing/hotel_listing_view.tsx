@@ -116,7 +116,7 @@ function FilterContainer(props: React.PropsWithChildren) {
     <div className={styles.filterContainer}>
       <div className={styles.filterTitle}>Filter results</div>
 
-      <form onSubmit={(e) => e.preventDefault()}>{children}</form>
+      {children}
     </div>
   );
 }

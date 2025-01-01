@@ -8,7 +8,7 @@ export function Ads(props: AdsProps) {
   const { className } = props;
 
   return (
-    <div className={className}>
+    <aside className={className}>
       {/* Actual ads link can be put here */}
       <a href="https://www.webjet.com.au/" target="_blank" rel="noopener">
         <img
@@ -17,6 +17,6 @@ export function Ads(props: AdsProps) {
           alt="27 day Grand Scandinavia tour with baltics cruises and flights - $6999"
         />
       </a>
-    </div>
+    </aside>
   );
 }
